@@ -49,7 +49,7 @@ def gradient_text(text, colors):
 
 def banner(console):
     os.system("cls" if os.name == "nt" else "clear")
-    brand_name = "Подпишись на канал @dark_tool_cpm"
+    brand_name = "Подпишись на канал @dark_tool_cpm Пополнение баланса: @sad_sad2"
 
 
     text = Text(brand_name, style="bold black")
