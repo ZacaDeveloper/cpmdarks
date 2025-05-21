@@ -49,7 +49,8 @@ def gradient_text(text, colors):
 
 def banner(console):
     os.system("cls" if os.name == "nt" else "clear")
-    brand_name = "Подпишись на канал @termcar"
+    brand_name = "Подпишись на канал @dark_tool_cpm"
+    brand_name = "Подпишись на канал @dark_tool_cpm Пополнение баланса: @sad_sad2"
 
 
     text = Text(brand_name, style="bold black")
@@ -76,29 +77,29 @@ def load_player_data(cpm):
         if all(key in data for key in ["floats", "localID", "money"]):
 
             console.print(
-                "[bold][red]========[/red][ ИНФОРМАЦИЯ ИГРОКА ][red]========[/red][/bold]"
+                "[bold][red]========[/red][ PLAYER DETAILS ][red]========[/red][/bold]"
             )
 
             console.print(
-                f"[bold white]   >> Ник        : {data.get('Name', 'UNDEFINED')}[/bold white]"
+                f"[bold white]   >> Name        : {data.get('Name', 'UNDEFINED')}[/bold white]"
             )
             console.print(
                 f"[bold white]   >> LocalID     : {data.get('localID', 'UNDEFINED')}[/bold white]"
             )
             console.print(
-                f"[bold white]   >> Денег      : {data.get('money', 'UNDEFINED')}[/bold white]"
+                f"[bold white]   >> Moneys      : {data.get('money', 'UNDEFINED')}[/bold white]"
             )
             console.print(
-                f"[bold white]   >> Монет       : {data.get('coin', 'UNDEFINED')}[/bold white]"
+                f"[bold white]   >> Coins       : {data.get('coin', 'UNDEFINED')}[/bold white]"
             )
         else:
             console.print(
-                "[bold red] '! ERROR: новые учетные записи должны быть зарегистрированы в игре хотя бы один раз (✘)[/bold red]"
+                "[bold red] '! ERROR: new accounts must be signed-in to the game at least once (✘)[/bold red]"
             )
             exit(1)
     else:
         console.print(
-            "[bold red] '! ERROR: seems like your login is not properly set !.[/bold red]"
+            "[bold red] '! ERROR: seems like your login is not properly set (✘)[/bold red]"
         )
         exit(1)
 
@@ -108,11 +109,11 @@ def load_key_data(cpm):
     data = cpm.get_key_data()
 
     console.print(
-        "[bold][red]========[/red][ ИНФОРМАЦИЯ О КЛЮЧЕ ][red]========[/red][/bold]"
+        "[bold][red]========[/red][ ACCES KEY DETAILS ][red]========[/red][/bold]"
     )
 
     console.print(
-        f"[bold white]   >> Ключ  [/bold white]: [black]{data.get("access_key")}[/black]"
+        f"[bold white]   >> Access Key  [/bold white]: [black]{data.get("access_key")}[/black]"
     )
 
     console.print(
@@ -139,13 +140,13 @@ def load_client_details():
     response = requests.get("http://ip-api.com/json")
     data = response.json()
     console.print(
-        "[bold red] =============[bold white][ ЛОКАЦИЯ ][/bold white]=============[/bold red]"
+        "[bold red] =============[bold white][ 𝙇𝙊𝘾𝘼𝙏𝙄𝙊𝙉 ][/bold white]=============[/bold red]"
     )
     console.print(
-        f"[bold white]    >> Страна    : {data.get('country')} {data.get('zip')}[/bold white]"
+        f"[bold white]    >> Country    : {data.get('country')} {data.get('zip')}[/bold white]"
     )
     console.print(
-        "[bold red] ===============[bold white][ МЕНЮ ][/bold white]===========[/bold red]"
+        "[bold red] ===============[bold white][ ＭＥＮＵ ][/bold white]===========[/bold red]"
     )
 
 
@@ -176,39 +177,39 @@ if __name__ == "__main__":
     while True:
         banner(console)
         acc_email = prompt_valid_value(
-            "[bold][?] Введите Email[/bold]", "Email", password=False
+            "[bold][?] Account Email[/bold]", "Email", password=False
         )
         acc_password = prompt_valid_value(
-            "[bold][?] Введите пароль[/bold]", "Password", password=False
+            "[bold][?] Account Password[/bold]", "Password", password=False
         )
         acc_access_key = prompt_valid_value(
-            "[bold][?] Введите ключ[/bold]", "Access Key", password=False
+            "[bold][?] Access Key[/bold]", "Access Key", password=False
         )
         console.print("[bold yellow][%] Trying to Login[/bold yellow]: ", end=None)
         cpm = CarParkTool(acc_access_key)
         login_response = cpm.login(acc_email, acc_password)
         if login_response != 0:
             if login_response == 100:
-                console.print("[bold red]УЧЕТНАЯ ЗАПИСЬ НЕ НАЙДЕНА. (✘)[/bold red]")
+                console.print("[bold red]ACCOUNT NOT FOUND (✘)[/bold red]")
                 sleep(2)
                 continue
             elif login_response == 101:
-                console.print("[bold red]НЕВЕРНЫЙ ПАРОЛЬ. (✘)[/bold red]")
+                console.print("[bold red]WRONG PASSWORD (✘)[/bold red]")
                 sleep(2)
                 continue
             elif login_response == 103:
-                console.print("[bold red]НЕДЕЙСТВИТЕЛЬНЫЙ КЛЮЧ. (✘)[/bold red]")
+                console.print("[bold red]INVALID ACCESS KEY (✘)[/bold red]")
                 sleep(2)
                 continue
             else:
-                console.print("[bold red]пробуйте снова[/bold red]")
+                console.print("[bold red]TRY AGAIN[/bold red]")
                 console.print(
-                    "[bold yellow] '!Примечание: убедитесь, что вы заполнили все поля!.[/bold yellow]"
+                    "[bold yellow] '! Note: make sure you filled out the fields ![/bold yellow]"
                 )
                 sleep(2)
                 continue
         else:
-            console.print("[bold green]УСПЕШНО (✔)[/bold green]")
+            console.print("[bold green]SUCCESSFUL (✔)[/bold green]")
             sleep(1)
         while True:
             banner(console)
@@ -246,86 +247,89 @@ if __name__ == "__main__":
                 "26",
             ]
             console.print(
-                "[bold yellow][bold white](01)[/bold white]: Увеличить денег                [bold red]1.5K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](01)[/bold white]: Increase Money                 [bold red]1.5K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](02)[/bold white]: Увеличить монет                [bold red]1.5K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](02)[/bold white]: Increase Coins                 [bold red]1.5K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](03)[/bold white]: Ранг Кинг                      [bold red]8K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](03)[/bold white]: King Rank                      [bold red]8K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](04)[/bold white]: Изменить ID                    [bold red]4.5K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](04)[/bold white]: Change ID                      [bold red]4.5K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](05)[/bold white]: Изменить имя                   [bold red]100[/bold red][/bold yellow]"
+                "[bold yellow][bold white](05)[/bold white]: Change Name                    [bold red]100[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](06)[/bold white]: Изменить имя (Радуга)          [bold red]100[/bold red][/bold yellow]"
+                "[bold yellow][bold white](06)[/bold white]: Change Name (Rainbow)          [bold red]100[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](07)[/bold white]: Номерные знаки                 [bold red]2K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](07)[/bold white]: Number Plates                  [bold red]2K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](08)[/bold white]: Удалить учётную запись         [bold red]Free[/bold red][/bold yellow]"
+                "[bold yellow][bold white](08)[/bold white]: Account Delete                 [bold red]Free[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](09)[/bold white]: Регистр учетной записи         [bold red]Free[/bold red][/bold yellow]"
+                "[bold yellow][bold white](09)[/bold white]: Account Register               [bold red]Free[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](10)[/bold white]: Удалить друзей                 [bold red]500[/bold red][/bold yellow]"
+                "[bold yellow][bold white](10)[/bold white]: Delete Friends                 [bold red]500[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](11)[/bold white]: Разблокировать Lamborghinis (ios only) [bold red]5K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](11)[/bold white]: Unlock Lamborghinis (ios only) [bold red]5K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](12)[/bold white]: Разблокировать все автомобили          [bold red]6K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](12)[/bold white]: Unlock All Cars                [bold red]6K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](13)[/bold white]: Разблокировать все автомобильные мигалки    [bold red]3.5K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](13)[/bold white]: Unlock All Cars Siren          [bold red]3.5K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](14)[/bold white]: Разблокировать двигатель W16       [bold red]4K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](14)[/bold white]: Unlock W16 Engine              [bold red]4K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](15)[/bold white]: Разблокировать все гудки           [bold red]3K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](15)[/bold white]: Unlock All Horns               [bold red]3K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](16)[/bold white]: Разблокировать отключить урон          [bold red]3K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](16)[/bold white]: Unlock Disable Damage          [bold red]3K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](17)[/bold white]: Разблокировать неограниченное топливо       [bold red]3K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](17)[/bold white]: Unlock Unlimited Fuel          [bold red]3K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](18)[/bold white]: Разблокировать дома                  [bold red]4K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](18)[/bold white]: Unlock Home 3                  [bold red]4K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](19)[/bold white]: Разблокировать дым                   [bold red]4K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](19)[/bold white]: Unlock Smoke                   [bold red]4K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](20)[/bold white]: Разблокировать колеса                [bold red]4K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](20)[/bold white]: Unlock Wheels                  [bold red]4K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](21)[/bold white]: Разблокировать оборудования M        [bold red]3K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](21)[/bold white]: Unlock Equipaments M           [bold red]3K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](22)[/bold white]: Разблокировать оборудования F        [bold red]3K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](22)[/bold white]: Unlock Equipaments F           [bold red]3K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](23)[/bold white]: Изменить проигрывание в гонках       [bold red]1K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](23)[/bold white]: Change Race Wins               [bold red]1K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](24)[/bold white]: Изменить победы в гонках             [bold red]1K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](24)[/bold white]: Change Race Loses              [bold red]1K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](25)[/bold white]: Клонировать аккаунт                  [bold red]7K[/bold red][/bold yellow]"
+                "[bold yellow][bold white](25)[/bold white]: Clone Account                  [bold red]7K[/bold red][/bold yellow]"
             )
             console.print(
-                "[bold yellow][bold white](0) [/bold white]: Выход из скрипта [/bold yellow]"
+                "[bold yellow][bold white](26)[/bold white]: Custom HP                      [bold red]2.5K[/bold red][/bold yellow]"
+            )
+            console.print(
+                "[bold yellow][bold white](0) [/bold white]: Exit From Tool [/bold yellow]"
             )
 
             console.print(
-                "[bold red]===============[bold white][ CPM Nevada ][/bold white]===============[/bold red]"
+                "[bold red]===============[bold white][ CPM DarkTool ][/bold white]===============[/bold red]"
             )
 
             service = IntPrompt.ask(
@@ -335,7 +339,7 @@ if __name__ == "__main__":
             )
 
             console.print(
-                "[bold red]===============[bold white][ CPM Nevada ][/bold white]===============[/bold red]"
+                "[bold red]===============[bold white][ CPM DarkTool ][/bold white]===============[/bold red]"
             )
 
             if service == 0:  # Exit
